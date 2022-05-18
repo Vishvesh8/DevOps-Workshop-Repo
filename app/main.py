@@ -34,17 +34,6 @@ def create_app() -> CORSMiddleware:
     )
 
 
-def paraphrase(text, max_length=128):
-
-  input_ids = paraphrasing_tokenizer.encode(text, return_tensors="pt", add_special_tokens=True)
-
-  generated_ids = paraphrasing_model.generate(input_ids=input_ids, num_return_sequences=20, num_beams=20, max_length=max_length, no_repeat_ngram_size=2, repetition_penalty=3.5, length_penalty=1.0, early_stopping=True)
-
-  preds = [paraphrasing_tokenizer.decode(g, skip_special_tokens=True, clean_up_tokenization_spaces=True) for g in generated_ids]
-
-  return preds
-
-
 
 
 app = create_app()
@@ -56,18 +45,3 @@ async def root():
 
 
 
-@router.post('/paraphraser_sentiment_checker/')
-async def paraphraser_sentiment_checker(data: text_data):
-  text = data.text
-  original_score = sentiment_analysis(text)[0]['score']
-    
-  return_array = []
-  if sentiment_analysis(text)[0]['label'] == "NEGATIVE":
-    preds = paraphrase("paraphrase: " + text)
-
-    for pred in preds:
-      if sentiment_analysis(pred)[0]['label'] == "POSITIVE":
-        return_array.append(str(pred))
-    return ["Negative", return_array[:3]]
-  else:
-    return ["Positive", return_array]
