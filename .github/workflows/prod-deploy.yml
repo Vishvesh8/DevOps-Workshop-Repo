@@ -5,12 +5,12 @@ on:
     branches: [ main ]
 
 env:
-  EB_PACKAGE_S3_BUCKET_NAME : "edcheck-api-bucket"
-  EB_APPLICATION_NAME       : "EdCheck-Backend-API"
-  EB_ENVIRONMENT_NAME       : "Edcheckbackendapi-env"
+  EB_PACKAGE_S3_BUCKET_NAME : "devopsworkshop-bucket"
+  EB_APPLICATION_NAME       : "DevOps-Workshop-application"
+  EB_ENVIRONMENT_NAME       : "Devopsworkshopapplication-env"
   DEPLOY_PACKAGE_NAME       : "docker-compose.prod.yml"
   DOCKER_TAG                : "vbhat8/prod"
-  AWS_REGION_NAME           : "us-east-2"
+  AWS_REGION_NAME           : "us-east-1"
 
 
 jobs:
