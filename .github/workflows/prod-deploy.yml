@@ -6,8 +6,8 @@ on:
 
 env:
   EB_PACKAGE_S3_BUCKET_NAME : "devopsworkshop-bucket"
-  EB_APPLICATION_NAME       : "DevOps-Workshop-application"
-  EB_ENVIRONMENT_NAME       : "Devopsworkshopapplication-env"
+  EB_APPLICATION_NAME       : "Devops-App"
+  EB_ENVIRONMENT_NAME       : "Devopsapp-env"
   DEPLOY_PACKAGE_NAME       : "docker-compose.prod.yml"
   DOCKER_TAG                : "vbhat8/prod"
   AWS_REGION_NAME           : "us-east-1"
